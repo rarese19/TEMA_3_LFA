@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <windows.h>
 
 using namespace std;
 ifstream f("dfa.in");
@@ -103,19 +104,19 @@ void DFA::minimize() {
     while (ok == true){
         ok = false;
         for (int i=stare_initiala+1; i<stare_initiala + nr_stari; i++)
-             for (int j=stare_initiala; j<i; j++){
-                 for (auto litera : alfabet){
-                     int i1 = check(dfa, i, litera);
-                     int j1 = check(dfa, j, litera);
-                     if (i1 < j1)
-                         swap(i1, j1);
-                     if (n[i1][j1] == 0 && n[i][j] != 0 && i1 != j1){
-                         n[i][j] = 0;
-                         ok = true;
-                         break;
-                     }
-                 }
-             }
+            for (int j=stare_initiala; j<i; j++){
+                for (auto litera : alfabet){
+                    int i1 = check(dfa, i, litera);
+                    int j1 = check(dfa, j, litera);
+                    if (i1 < j1)
+                        swap(i1, j1);
+                    if (n[i1][j1] == 0 && n[i][j] != 0 && i1 != j1){
+                        n[i][j] = 0;
+                        ok = true;
+                        break;
+                    }
+                }
+            }
     }
 //    for (int i=0; i<nr_stari; i++){
 //        for (int j=0; j<nr_stari; j++)
@@ -164,13 +165,16 @@ void DFA::minimize() {
     }
 
     cout<<"Numar stari: "<<nounr<<endl;
+
     cout<<"Stare initiala: "<<newInitiala<<endl;
+
     cout<<"Numar stari finale: "<<newFinale.size()<<endl;
-    cout<<"Stari finale: \n";
+    cout<<"Stari finale: ";
     for (int i=0; i<newFinale.size(); i++)
         cout<<newFinale[i]<<" ";
-    cout<<endl;
-    cout<<"TRANZITII: "<<endl;
+    cout<<endl<<endl;
+
+    cout<<"\tTRANZITII: "<<endl;
     for (int i=0; i<newStari.size(); i++){
         cout<<"Stare start: "<<newStari[i]<<"; ";
         for (int j=0; j<newStari[i].length(); j++) {
@@ -199,11 +203,41 @@ int main(){
 
     dfa.read();
 
-    dfa.display();
+    system("cls");
+    while (true){
+        system("cls");
+        cout<<"1. Afisati matricea asociata DFA-ului\n";
+        cout<<"2. Afisati limbajul automatului.\n";
+        cout<<"3. Efectuati minimizarea.\n";
+        cout<<"4. Iesire\n";
+        cout<<"Introduceti alegerea: ";
+        int choice;
+        cin>>choice;
+        switch (choice){
+            case 1:{
+                system("cls");
+                dfa.display();
+                system("pause");
+                break;
+            }
 
-    dfa.language();
+            case 2:{
+                system("cls");
+                dfa.language();
+                system("pause");
+                break;
+            }
 
-    dfa.minimize();
+            case 3:{
+                system("cls");
+                dfa.minimize();
+                system("pause");
+                break;
+            }
 
-    return 0;
+            case 4:{
+                exit(0);
+            }
+        }
+    }
 }
