@@ -167,16 +167,16 @@ void DFA::minimize(int o) {
     //     cout<<endl;
     // }
 
-    // int k = 0;
-    // for (int i=0; i<nr_stari; i++){
-    //     for (int j=0; j<nr_stari; j++)
-    //         if (i > j && n[i][j] != 0)
-    //             k = 1;
-    // }
-    // if (k == 0 || this->o == 1){
-    //     cout<<"Automatul este minimal.\n";
-    //     return;
-    // }
+    int k = 0;
+    for (int i=0; i<nr_stari; i++){
+        for (int j=0; j<nr_stari; j++)
+            if (i > j && n[i][j] != 0)
+                k = 1;
+    }
+    if (k == 0){
+        cout<<"Automatul este minimal.\n";
+        return;
+    }
 
     int c[50] = {}, nounr = 0;
     vector<string> newStari;
