@@ -1,2 +1,2 @@
-# TEMA_3_LFA
+# Tema_3_LFA
 Algoritm de minimizare DFA.
