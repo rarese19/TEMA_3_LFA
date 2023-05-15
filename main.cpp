@@ -105,7 +105,7 @@ void DFA::display() {
         for (auto pair : stari_noi){
             for (int i=0; i<pair.second.size(); i++){
                 cout<<"Stare start: ";
-                cout<<pair.first<<";";
+                cout<<pair.first<<"; ";
                 cout<<"Stare stop: ";
                 cout<<pair.second[i].first<<"; ";
                 cout<<"Conditie: ";
@@ -261,7 +261,7 @@ void DFA::minimize(int o) {
     for (auto pair : stari_noi){
         for (int i=0; i<pair.second.size(); i++){
             cout<<"Stare start: ";
-            cout<<pair.first<<";";
+            cout<<pair.first<<"; ";
             cout<<"Stare stop: ";
             cout<<pair.second[i].first<<"; ";
             cout<<"Conditie: ";
